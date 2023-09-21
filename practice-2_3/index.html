@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table</title>
+    <link rel="stylesheet" href="./css/normalise.css">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <form class="form flex">
+            <label for="" class="form-label">
+                <input data-min-length="3" class="form-search__input " type="search" placeholder="Ведите запрос">
+            </label>
+            <button class="btn-reset form__btn-search" type="submit">Найти</button>
+            <button class="btn-reset form__btn-reset" type="reset">Сбросить </button>
+        </form>
+        <table class="posts__table" cellpadding='10'>
+            <thead class="table__head">
+                <tr>
+                    <th>
+                        <span class="table__arrow table__user-id">User-Id</span>
+                    </th>
+                    <th>
+                        <span class="table__arrow table__id">ID</span>
+                    </th>
+                    <th>
+                        <span class="table__arrow table__title">title</span>
+                    </th>
+                    <th>
+                        <span class="table__arrow table__body">body</span>
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="posts__table-body">
+            </tbody>
+        </table>
+    </div>
+    <script src="./js/index.js"></script>
+</body>
+</html>

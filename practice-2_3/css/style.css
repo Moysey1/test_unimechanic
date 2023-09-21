@@ -1,0 +1,135 @@
+html {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+  *,
+  *::before,
+  *::after {
+    -webkit-box-sizing: inherit;
+    box-sizing: inherit;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+body {
+    min-width: 320px;
+    font-family: 'Open Sans', sans-serif;
+    overflow-x: hidden;
+}
+
+p,
+h1,
+h2,
+h3,
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+.list-reset {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.btn-reset {
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.flex {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    max-width: 1024px;
+    padding: 50px 20px;
+    margin: 0 auto;
+
+}
+
+.form {
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 30px;
+    min-width: 300px;
+}
+
+.form-label {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-search__input {
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.form__btn-search {
+    color: white;
+    background-color: blue;
+    padding: 5px 10px;
+    border: 2px solid red;
+    border-radius: 8px;
+}
+
+.form__btn-reset {
+    color: red;
+    background-color: white;
+    padding: 5px 10px;
+    border: 2px solid red;
+    border-radius: 8px;
+}
+
+.table__arrow {
+    cursor: pointer;
+    position: relative;
+}
+
+.table__arrow::before {
+    content: '';
+    position: absolute;
+    background-image: url(../img/arrow_down.svg);
+    width: 12px;
+    height: 12px;
+    left: 39px;
+    top: 4px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.table__user-id::before {
+    left:40px;
+    top: 17px;
+}
+
+.table__id::before {
+    left: 20px;
+    top: 4px;
+}
+
+.table__arrow--active::before {
+    transform: rotate(180deg);
+}
+
+.error-label {
+    color:red;
+}
