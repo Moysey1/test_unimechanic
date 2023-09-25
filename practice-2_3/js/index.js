@@ -1,12 +1,12 @@
 const postList = document.querySelector(".posts__table-body");
 const tableHeadGroup = document.querySelector(".table__head");
 const form = document.querySelector(".form");
-const btnSearch = document.querySelector(".form__btn-search");
 const btnReset = document.querySelector(".form__btn-reset");
 const input = document.querySelector(".form-search__input");
 const arorwArray = document.querySelectorAll(".table__arrow");
 
 let postsArray = [];
+let postsArrayNew = [];
 
 async function getPosts() {
 	const response = await fetch("https://jsonplaceholder.typicode.com/posts");
@@ -45,12 +45,31 @@ function createPostItems(arr) {
 
 getPosts();
 
-function filterPosts(arr, prop, value) {
+// function filterPosts(arr, prop, value) {
+// 	let result = [];
+// 	let copyArray = [...arr];
+// 	for (const item of copyArray) {
+// 		if (String(item[prop]).includes(value) == true) result.push(item);
+// 	}
+
+// 	createPostItems(result);
+// }
+
+function filterPosts(arr, prop1, prop2, prop3, prop4, value) {
 	let result = [];
 	let copyArray = [...arr];
 	for (const item of copyArray) {
-		if (String(item[prop]).includes(value) == true) result.push(item);
+		if (
+			String(item[prop1]).includes(value) ||
+			String(item[prop2]).includes(value) ||
+			String(item[prop3]).includes(value) ||
+			String(item[prop4]).includes(value)
+		) {
+			result.push(item);
+		}
 	}
+
+	postsArrayNew = result;
 
 	createPostItems(result);
 }
@@ -75,9 +94,8 @@ function removeError(input) {
 	}
 }
 
-btnSearch.addEventListener("click", (e) => {
-	e.preventDefault();
-
+input.addEventListener("input", () => {
+	removeError(input);
 	if (input.value.length < input.dataset.minLength) {
 		createError(
 			input,
@@ -86,7 +104,7 @@ btnSearch.addEventListener("click", (e) => {
 		createPostItems(postsArray);
 	} else {
 		removeError(input);
-		filterPosts(postsArray, "body", input.value);
+		filterPosts(postsArray, "body", "userId", "id", "title", input.value);
 	}
 });
 
@@ -105,52 +123,51 @@ const sortPosts = (arr, prop, dir = false) =>
 	arr.sort((a, b) => ((!dir ? a[prop] < b[prop] : a[prop] > b[prop]) ? -1 : 1));
 
 tableHeadGroup.addEventListener("click", (e) => {
-	const postsArrayCopy = [...postsArray];
-
+	let postsArrayCopy = [...postsArrayNew];
 	if (e.target.classList.contains("table__user-id")) {
 		if (!e.target.classList.contains("table__arrow--active")) {
-			sortPosts(postsArrayCopy, "userId", false);
+			sortPosts(postsArrayCopy, "userId", true);
 			e.target.classList.add("table__arrow--active");
-
+			console.log(postsArrayCopy);
 			createPostItems(postsArrayCopy);
 		} else if (e.target.classList.contains("table__arrow--active")) {
-			sortPosts(postsArrayCopy, "userId", true);
+			sortPosts(postsArrayCopy, "userId", false);
 			e.target.classList.remove("table__arrow--active");
 
 			createPostItems(postsArrayCopy);
 		}
 	} else if (e.target.classList.contains("table__id")) {
 		if (!e.target.classList.contains("table__arrow--active")) {
-			sortPosts(postsArrayCopy, "id", false);
+			sortPosts(postsArrayCopy, "id", true);
 			e.target.classList.add("table__arrow--active");
 
 			createPostItems(postsArrayCopy);
 		} else if (e.target.classList.contains("table__arrow--active")) {
-			sortPosts(postsArrayCopy, "id", true);
+			sortPosts(postsArrayCopy, "id", false);
 			e.target.classList.remove("table__arrow--active");
 
 			createPostItems(postsArrayCopy);
 		}
 	} else if (e.target.classList.contains("table__title")) {
 		if (!e.target.classList.contains("table__arrow--active")) {
-			sortPosts(postsArrayCopy, "title", false);
+			sortPosts(postsArrayCopy, "title", true);
 			e.target.classList.add("table__arrow--active");
 
 			createPostItems(postsArrayCopy);
 		} else if (e.target.classList.contains("table__arrow--active")) {
-			sortPosts(postsArrayCopy, "title", true);
+			sortPosts(postsArrayCopy, "title", false);
 			e.target.classList.remove("table__arrow--active");
 
 			createPostItems(postsArrayCopy);
 		}
 	} else if (e.target.classList.contains("table__body")) {
 		if (!e.target.classList.contains("table__arrow--active")) {
-			sortPosts(postsArrayCopy, "body", false);
+			sortPosts(postsArrayCopy, "body", true);
 			e.target.classList.add("table__arrow--active");
 
 			createPostItems(postsArrayCopy);
 		} else if (e.target.classList.contains("table__arrow--active")) {
-			sortPosts(postsArrayCopy, "body", true);
+			sortPosts(postsArrayCopy, "body", false);
 			e.target.classList.remove("table__arrow--active");
 
 			createPostItems(postsArrayCopy);

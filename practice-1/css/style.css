@@ -269,10 +269,40 @@ body {
   .modal__form-right__label {
     display: inline-block;
     height: 100%;
-    background-image: url(../img/input-right.png);
-    background-repeat: no-repeat;
-    background-position-y: center;
+    position: relative;
+    
   }
+
+  .modal__label-right__preview {
+    position: absolute;
+    top: 30px;
+    
+    z-index: 1;
+  }
+
+  .modal__label-right__preview-img {
+    width: 175px;
+    height: 175px;
+    border-radius: 100px;
+  }
+
+  .modal__label-right__preview-btn {
+    position: absolute;
+    right: 20px;
+  }
+
+  .modal__label-right__svg {
+    z-index: 10;
+  }
+
+  .modal__label-right__input-label {
+    z-index: 10;
+  }
+
+  .modal__file--onload {
+    z-index: -1;
+  }
+
 
   .modal__form-right__label-wrapper {
     display: flex;
@@ -300,6 +330,7 @@ body {
     color: #FFF;
     font-size: 18px;
     font-weight: 400;
+    font-family:sans-serif,;
     text-decoration-line: underline;
     line-height: 28px;
     text-align: center;
@@ -394,7 +425,6 @@ body {
 
   .modal__form-bottom__select:focus {
     outline: none;
-    color: red;
   }
   
   .error {
@@ -407,6 +437,14 @@ body {
     left: 0;
     font-size: 12px;
     color:red;
+  }
+
+  .input-file--error {
+    color: red;
+  }
+
+  .modal__input::placeholder {
+    font-size: 12px;
   }
 
   @media (max-width: 836px) {
@@ -439,6 +477,10 @@ body {
       min-height: 208px;
     }
 
+    .error-label {
+      font-size: 10px;
+    }
+
   }
 
   @media (max-width: 507px) {
@@ -457,6 +499,10 @@ body {
     .modal__label-left {
       min-width: 266px;
     }    
+
+    .error-label {
+      font-size: 8px;
+    }
   }
 
   @media (max-width: 330px) {

@@ -84,13 +84,6 @@ ul {
     border-radius: 8px;
 }
 
-.form__btn-search {
-    color: white;
-    background-color: blue;
-    padding: 5px 10px;
-    border: 2px solid red;
-    border-radius: 8px;
-}
 
 .form__btn-reset {
     color: red;
